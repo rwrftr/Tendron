@@ -12,37 +12,51 @@ class Tendril
     myAngle = theta;
   }
 
+  public boolean distCalc(int x, int y) {
+
+    return (dist(750, 750, (x), (y)) >= var1 + (( test - myNumSegments ) *(30 * myNumSegments ))) ;
+  }
+
   public void show()
   {
     stroke(0);
-    strokeWeight((0-10) + myNumSegments*4);
+    strokeWeight(4 + myNumSegments*1.5);
     int startX = myX;
     int startY = myY;
 
+
+    for (int i = 0; i < 7; i++) {
+      test2[i] = (int)((Math.random()*0.4) -0.2);
+    }
+
     for (int i = 0; i < myNumSegments; i++) {
 
-      myAngle += ((Math.random()*0.4) -0.2);
-
       int endX = startX + (int)(Math.cos(myAngle) * SEG_LENGTH);
-
       int endY = startY + (int)(Math.sin(myAngle) * SEG_LENGTH);
-
-      //println(startX + " " + endX + " " + startY + " " + endY);
-      //println(startX + " + " + (Math.sin(myAngle) * SEG_LENGTH) + " = " + endX );
-
-      /*if((dist(endY, endY, 750, 750) >= (600 - (test2 * myNumSegments) ))){
-       line(startX, startY, endX, endY);
-       }
-       */
-
-      line(startX, startY, endX, endY);
       startX = endX;
       startY = endY;
     }
-    if (dist(startX, startY, 750, 750) >= (600 - (test2 * myNumSegments) )) {
-      if (myNumSegments > test-2 ) {
+    println((dist(750, 750, (startX), (startY))));
+    if (distCalc(startX, startY)) {
+      startX = myX;
+      startY = myY;
+
+      for (int i = 0; i < myNumSegments; i++) {
+
+        myAngle += ((Math.random()*0.4) -0.2);
+
+        int endX = startX + (int)(Math.cos(myAngle) * SEG_LENGTH);
+
+        int endY = startY + (int)(Math.sin(myAngle) * SEG_LENGTH);
+
+        line(startX, startY, endX, endY);
+        startX = endX;
+        startY = endY;
+      }
+      if (myNumSegments > test-3 ) {
         Cluster a = new Cluster(myNumSegments-1, startX, startY);
       }
     }
+   
   }
 }

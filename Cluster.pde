@@ -22,7 +22,8 @@ public class Cluster
     g.show();
 
     fill(255);
-    if(len == test){stroke(#0FF245);}else{stroke(242, 15, 15);}
+    
+    if(len == test){stroke(#0FF245); strokeWeight(10);}else{stroke(242, 15, 15);strokeWeight(len*2);}
     ellipse(x, y, 20, 20);
     stroke(0);
     fill(0);

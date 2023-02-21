@@ -1,5 +1,6 @@
 int test = 5;
-int test2 = 82;
+int var1 = 190;
+int[] test2 = new int[7];
 
 public void setup()
 {
@@ -18,8 +19,8 @@ public void draw()
   ellipse(750, 750, 400, 400);
   ellipse(750, 750, 600, 600);
   textSize(150);
-  text(test2,20,150);
-  Cluster c = new Cluster(test, 750, 750); // initial number of segments in the tendril and starting (x,y) coordinate
+  text(var1,20,150);
+  Cluster c = new Cluster(test, 750, 750);
 }
 public void mousePressed()
 {
@@ -28,11 +29,11 @@ public void mousePressed()
 
 public void keyPressed() {
   if (key == 'i') {
-    test2+=2;
+    var1+=2;
     redraw();
   }
   if (key == 'j') {
-    test2-=2;
+    var1-=2;
     redraw();
   }
 }
